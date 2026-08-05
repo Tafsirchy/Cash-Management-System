@@ -1,20 +1,28 @@
 {% extends 'ManageCash/base.html' %}
 {% block content %}
-<div class="bg-white shadow rounded p-6">
-  <h2 class="text-2xl font-semibold mb-4">Edit Expense Entry</h2>
-  <form method="post" class="space-y-4">
+<div class="max-w-xl mx-auto bg-white border border-slate-100 shadow-sm rounded-2xl p-6 sm:p-8">
+  <div class="flex items-center gap-2 mb-6">
+    <span class="p-1.5 bg-rose-50 text-rose-600 rounded-lg">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+    </span>
+    <h2 class="text-xl font-bold tracking-tight text-slate-900">Edit Expense Entry</h2>
+  </div>
+
+  <form method="post" class="space-y-5">
     {% csrf_token %}
     <div>
-      <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-      <input type="text" name="description" id="description" value="{{ expense.description }}" class="mt-1 block w-full px-3 py-2 border rounded-md" required>
+      <label for="description" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Description</label>
+      <input type="text" name="description" id="description" value="{{ expense.description }}" class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all duration-200 text-sm" required>
     </div>
+    
     <div>
-      <label for="amount" class="block text-sm font-medium text-gray-700">Amount</label>
-      <input type="text" name="amount" id="amount" value="{{ expense.amount }}" class="mt-1 block w-full px-3 py-2 border rounded-md" required>
+      <label for="amount" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Amount</label>
+      <input type="text" name="amount" id="amount" value="{{ expense.amount }}" class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all duration-200 text-sm" required>
     </div>
-    <div class="flex space-x-2">
-      <button class="px-4 py-2 bg-red-600 text-white rounded" type="submit">Update</button>
-      <a class="px-4 py-2 bg-gray-200 text-gray-800 rounded" href="{% url 'dashboard' %}">Cancel</a>
+    
+    <div class="flex items-center justify-end gap-2 pt-2">
+      <a class="px-5 py-2.5 bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50 text-sm font-semibold rounded-xl transition-all duration-200" href="{% url 'dashboard' %}">Cancel</a>
+      <button class="px-5 py-2.5 bg-rose-600 hover:bg-rose-700 text-white text-sm font-semibold rounded-xl shadow-sm shadow-rose-100 hover:shadow-md transition-all duration-200" type="submit">Update</button>
     </div>
   </form>
 </div>
