@@ -1,23 +1,33 @@
 {% extends 'ManageCash/base.html' %}
 {% block content %}
-<div class="bg-white shadow rounded p-6">
-  <h2 class="text-2xl font-semibold mb-4">Add Cash</h2>
-  <form method="post" class="space-y-4">
+<div class="max-w-xl mx-auto bg-white border border-slate-100 shadow-sm rounded-2xl p-6 sm:p-8">
+  <div class="flex items-center gap-2 mb-6">
+    <span class="p-1.5 bg-emerald-50 text-emerald-600 rounded-lg">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"></path></svg>
+    </span>
+    <h2 class="text-xl font-bold tracking-tight text-slate-900">Add Cash Entry</h2>
+  </div>
+  
+  <form method="post" class="space-y-5">
     {% csrf_token %}
     <div>
-      <label for="source" class="block text-sm font-medium text-gray-700">Source</label>
-      <input type="text" name="source" id="source" class="mt-1 block w-full px-3 py-2 border rounded-md" required>
+      <label for="source" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Source</label>
+      <input type="text" name="source" id="source" placeholder="e.g., Salary, Freelance, Gift" class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all duration-200 text-sm" required>
     </div>
+    
     <div>
-      <label for="amount" class="block text-sm font-medium text-gray-700">Amount</label>
-      <input type="text" name="amount" id="amount" class="mt-1 block w-full px-3 py-2 border rounded-md" required>
+      <label for="amount" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Amount</label>
+      <input type="text" name="amount" id="amount" placeholder="0.00" class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all duration-200 text-sm" required>
     </div>
+    
     <div>
-      <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-      <textarea name="description" id="description" class="mt-1 block w-full px-3 py-2 border rounded-md" rows="3"></textarea>
+      <label for="description" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Description</label>
+      <textarea name="description" id="description" placeholder="Optional notes about this income..." class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all duration-200 text-sm" rows="3"></textarea>
     </div>
-    <div>
-      <button class="px-4 py-2 bg-green-600 text-white rounded" type="submit">Add</button>
+    
+    <div class="flex items-center justify-end gap-2 pt-2">
+      <a class="px-5 py-2.5 bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50 text-sm font-semibold rounded-xl transition-all duration-200" href="{% url 'dashboard' %}">Cancel</a>
+      <button class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-xl shadow-sm shadow-emerald-100 hover:shadow-md transition-all duration-200" type="submit">Add Cash</button>
     </div>
   </form>
 </div>
